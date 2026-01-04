@@ -2,8 +2,9 @@
 node_modules/
 
 # Build outputs
-dist/
+node/dist/
 *.tsbuildinfo
+rust/target
 
 # Logs
 *.log
@@ -20,7 +21,7 @@ Thumbs.db
 .idea/
 
 # Testing
-coverage/
+node/coverage/
 
 # Packaging
 *.tgz
