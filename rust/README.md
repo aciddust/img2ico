@@ -12,9 +12,18 @@ This is the WebAssembly port of the `imgico` library, allowing client-side image
   - Image to ICO (multiple sizes)
   - Image to SVG (embedded PNG)
 
-## Installation
+## Build
 
-Build the package locally using `wasm-pack`.
+To build the project from source:
+
+1. **Install Rust**: [https://rustup.rs/](https://rustup.rs/)
+2. **Install wasm-pack**:
+
+```bash
+cargo install wasm-pack
+```
+
+3. **Build**:
 
 ```bash
 wasm-pack build --target web
@@ -47,33 +56,6 @@ async function main() {
 
     // Download or use the ICO data
     download(icoData, 'icon.ico');
-
-## CLI Usage
-
-You can also use `imgico` as a command-line tool.
-
-### Installation
-
-```bash
-cargo install --path .
-```
-
-### Usage
-
-```bash
-imgico <input_file> [options]
-```
-
-Options:
-- `-f, --format <type>`: Output format: 'ico' or 'svg' (default: ico)
-- `-h, --help`: Show help message
-
-Example:
-
-```bash
-imgico input.png -f ico
-```
-
     // Custom sizes
     const customIcoData = imgico(inputBuffer, new Uint32Array([16, 32]));
   } catch (e) {
@@ -106,6 +88,33 @@ function download(data, filename) {
 main();
 ```
 
+## CLI Usage
+
+You can also use `imgico` as a command-line tool.
+
+### Installation
+
+```bash
+cargo install --path .
+```
+
+### Usage
+
+```bash
+imgico <input_file> [options]
+```
+
+Options:
+
+- `-f, --format <type>`: Output format: 'ico' or 'svg' (default: ico)
+- `-h, --help`: Show help message
+
+Example:
+
+```bash
+imgico input.png -f ico
+```
+
 ## API
 
 ### `imgico(input, sizes?)`
@@ -121,23 +130,6 @@ Returns: `Uint8Array` (The generated ICO file data).
 - `size`: `number` (optional) - The target width/height for the embedded image. If omitted, uses original size.
 
 Returns: `Uint8Array` (The generated SVG file data as bytes).
-
-## Build
-
-To build the project from source:
-
-1. **Install Rust**: [https://rustup.rs/](https://rustup.rs/)
-2. **Install wasm-pack**:
-
-```bash
-cargo install wasm-pack
-```
-
-3. **Build**:
-
-```bash
-wasm-pack build --target web
-```
 
 ## License
 
